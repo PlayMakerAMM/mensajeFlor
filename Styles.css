@@ -142,3 +142,19 @@ background: #008f39;
   animation: crecerRaices 2s 4s forwards;
 }
 
+@media (max-width: 768px) {
+  /* Estilos para dispositivos móviles */
+  body {
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 20px; 
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+}
+
