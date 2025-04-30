@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Styles.css">
+    <title>Mi Amor por Ti</title>
+</head>
+<body>
+    <div id="mensaje"></div>
+    <div id="contador"></div>
+    <div id="arbol-container">
+        <div id="copa"></div>
+        <div class="tallo">
+          <div class="flor">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+          </div>
+        </div>        
+    </div>
+
+    <script>
+        const mensajes = ["Te amo más que a las estrellas en el cielo, más que a la arena en el mar... Eres mi todo, mi razón de ser, mi amor eterno... ♥",
+                            "Cree en ti tanto como yo creo en ti; juntos podemos lograr lo que sea.",
+                            "Tu potencial es infinito, mi amor. ¡Ve y conquista tus sueños!,",
+                            "Cada desafío es una oportunidad para demostrar lo fuerte y capaz que eres.",
+                            "No importa cuántas veces caigas, siempre estaré aquí para ayudarte a levantarte y seguir adelante.",
+                            "Eres más valiente de lo que crees, más fuerte de lo que pareces y más inteligente de lo que piensas.",
+                            "Un corazón deja de latir, pero el amor vive para siempre.",
+                            "Ahora sé que un sueño no es real hasta que lo compartes.",
+                            "Con esta mano aliviaré tus penas; tu copa jamás estará vacía, pues yo seré tu vino; con esta vela guiaré tus pasos en la oscuridad. Y con este anillo yo... Te gustaria olvidar todas nuestras diferencias, todo lo malo y quedarnos solo con lo bueno y empezar solo con eso para poder decir (¿Te casarias conmigo ?)",
+                            "No tengas miedo de brillar, tu luz inspira a quienes te rodean.",
+                            "Nunca dudes de tu valor. Eres importante y capaz de grandes cosas.",
+                            "Mi amor y mi apoyo incondicional siempre estarán contigo en cada paso del camino.",
+                            "Eres mi refugio, mi cómplice y mi más grande amor.",
+                            "Amarte es la decisión más hermosa que he tomado.",
+                            "Eres el sueño más bonito hecho realidad.",
+                            "Tu amor me inspira a ser una mejor persona cada día."];
+        let indexMensaje = 0;
+        const indice = Math.floor(Math.random() * 15);
+        const mensajeElement = document.getElementById('mensaje');
+        
+        // Función para escribir el mensaje letra por letra
+        function escribirMensaje() {            
+            const mensaje = mensajes[indice];
+            if (indexMensaje < mensaje.length) {
+                mensajeElement.innerHTML += mensaje.charAt(indexMensaje);
+                indexMensaje++;
+                setTimeout(escribirMensaje, 100);
+                }
+        }
+
+        // Función para actualizar el contador
+        function actualizarContador() {
+            const fechaInicio = new Date('2022-12-25');
+            const fechaActual = new Date();
+            const diferencia = fechaActual - fechaInicio;
+            
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('contador').innerHTML = 
+                `Mi amor por ti comenzó hace ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+        }
+
+        // Función para crear y animar corazones
+        function crearCorazones() {
+            const copa = document.getElementById('copa');
+            const colores = ['#ff69b4', '#ff1493', '#ff0000', '#ff69b4', '#d4145a'];
+            
+            setInterval(() => {
+                const corazon = document.createElement('div');
+                corazon.className = 'corazon';
+                corazon.innerHTML = '♥';
+                corazon.style.color = colores[Math.floor(Math.random() * colores.length)];
+                corazon.style.left = Math.random() * 200 + 'px';
+                copa.appendChild(corazon);
+
+                setTimeout(() => {
+                    copa.removeChild(corazon);
+                }, 3000);
+            }, 300);
+        }
+
+        // Iniciar todas las animaciones
+        escribirMensaje();
+        setInterval(actualizarContador, 1000);
+        setTimeout(crearCorazones, 5000);
+    </script>
+</body>
+</html>

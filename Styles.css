@@ -1,0 +1,144 @@
+body {
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+#mensaje {
+  margin-top: 50px;
+  font-size: 24px;
+  color: #d4145a;
+  text-align: center;
+  min-height: 100px;
+}
+
+#contador {
+  font-size: 30px;
+  color: #ff1493;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#arbol-container {
+  position: relative;
+  height: 400px;
+  width: 300px;
+}
+
+.tallo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+background: #008f39;
+  transform-origin: bottom;
+  animation: crecerTronco 3s forwards;
+}
+
+.flor {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  right: 45px;
+  top: -8px; 
+}
+
+.petalo {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  background-color: #2196F3; /* Color azul */
+  border-radius: 50px 50px 0 0;
+  transform: rotate(45deg);
+  top: 0;
+  left: 20px;
+}
+
+.petalo:nth-child(2) {
+  transform: rotate(135deg);
+}
+
+.petalo:nth-child(3) {
+  transform: rotate(225deg);
+}
+
+.petalo:nth-child(4) {
+  transform: rotate(315deg);
+}
+
+.centro {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  background-color: #FFEB3B; /* Color amarillo */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#copa {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  animation: aparecerCopa 2s 3s forwards;
+}
+
+.corazon {
+  position: absolute;
+  font-size: 20px;
+  animation: caerCorazon 3s infinite;
+}
+
+@keyframes crecerTronco {
+  from {
+      height: 0;
+  }
+  to {
+      height: 75%;
+  }
+}
+
+@keyframes aparecerCopa {
+  from {
+      opacity: 0;
+      transform: translateX(-65%) scale(0);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(-65%) scale(1);
+  }
+}
+
+@keyframes caerCorazon {
+  0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(400px) rotate(360deg);
+      opacity: 0;
+  }
+}
+
+#raices {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 70px;
+  opacity: 0;
+  animation: crecerRaices 2s 4s forwards;
+}
+
